@@ -6,17 +6,7 @@ class MessageParser {
 
   parse(message) {
     message = message.toLowerCase();
-    console.log(message);
-
-    if (
-      message.includes("joke") ||
-      message.includes("jokes") ||
-      message.includes("funny")
-    ) {
-      return this.actionProvider.handleJoke();
-    } else if (message.includes("thanks") || message.includes("thank you")) {
-      return this.actionProvider.handleThanks();
-    } else {
+    if (message.trim().length > 0) {
       return this.actionProvider.handleDataRedering(message);
     }
   }

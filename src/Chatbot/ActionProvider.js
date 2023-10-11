@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setHtmlData } from "../action";
+import { setHtmlData, setPrevData } from "../action";
 
 function useActionProvider() {
   const [messages, setMessages] = useState([]);
   const htmlData = useSelector((state) => state.htmlData);
+  const prevData = useSelector((state) => state.prevData);
+
   const dispatch = useDispatch();
   const createChatBotMessage = (content) => {
     return {
@@ -21,12 +23,15 @@ function useActionProvider() {
   };
 
   const handleDataRedering = (message) => {
+    console.log("message", message);
     fetch(
-      "https://1dc2-2001-420-5440-1250-bce9-7280-e49d-6ebf.ngrok-free.app",
+      "https://ada5-2401-4900-1cb9-6efb-117c-ba30-6d31-dbb9.ngrok-free.app",
       {
         method: "POST",
         body: JSON.stringify({
-          payload: message,
+          question: message,
+          Context: prevData,
+          tags: ["what", "is", "your", "name"],
         }),
         headers: { "Content-Type": "application/json" },
       }
@@ -38,6 +43,7 @@ function useActionProvider() {
         return response.text();
       })
       .then((data) => {
+        dispatch(setPrevData(message));
         let html_Data = [...htmlData];
         html_Data.push(data);
         dispatch(setHtmlData(html_Data));

@@ -2,6 +2,7 @@ import { createStore } from "redux";
 
 const initialState = {
   htmlData: [],
+  prevData: "",
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         htmlData: action.payload,
+      };
+    case "SET_PREV_DATA":
+      return {
+        ...state,
+        prevData: action.payload,
       };
 
     default:
