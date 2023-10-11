@@ -31,7 +31,7 @@ function useActionProvider() {
         body: JSON.stringify({
           question: message,
           Context: prevData,
-          tags: ["what", "is", "your", "name"],
+          tags: message.split(" "),
         }),
         headers: { "Content-Type": "application/json" },
       }
