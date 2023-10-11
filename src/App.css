@@ -11,16 +11,33 @@ body,
   min-height: 100%;
   display: flex;
   font-family: "Ubuntu", sans-serif;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-  rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 .left-side {
-  display: flex;
-  justify-content: center;
   background-color: #2898ec;
   align-items: center;
   border-right: 1px solid white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.clearbtn {
+  border-color: white;
+  color: white;
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px 0;
+  margin-top: 20px;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  display: block;
+}
+
+.clearbtn:hover {
+  color: #2898ec;
+  background-color: white;
 }
 
 a {
@@ -29,7 +46,6 @@ a {
 }
 
 .rightside {
-
   background-color: #2898ec;
   color: white;
   width: 100%;
