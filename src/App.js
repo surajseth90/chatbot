@@ -12,6 +12,7 @@ function App() {
   const clearClickHandler = () => {
     setIndex((index) => index + 1);
     dispatch(setHtmlData([]));
+    setIndex(0);
   };
 
   return (

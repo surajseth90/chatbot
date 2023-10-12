@@ -29,7 +29,7 @@ body,
 
 .clearbtn {
   background-color: #2898ec;
-  color: black;
+  color: white;
   margin-left: auto;
   padding: 10px 20px;
   border-radius: 6px;
@@ -41,6 +41,7 @@ body,
 
 .clearbtn:hover {
   background-color: white;
+  color: black;
 }
 
 .rendered-list {
