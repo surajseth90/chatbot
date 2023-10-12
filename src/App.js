@@ -2,7 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import Chatbot from "./Chatbot";
 import { useDispatch, useSelector } from "react-redux";
-import { setHtmlData } from "./action";
+import { setHtmlData, setPrevData } from "./action";
 
 function App() {
   const htmlData = useSelector((store) => store.htmlData);
@@ -11,39 +11,17 @@ function App() {
 
   const clearClickHandler = () => {
     setIndex((index) => index + 1);
-    dispatch(setHtmlData([]));
-    setIndex(0);
+    // dispatch(setHtmlData([]));
+    dispatch(setPrevData(""))
   };
 
   return (
     <div className="app">
       <div className="left-side">
+        <button className="clearbtn" onClick={clearClickHandler}>
+          Clear
+        </button>
         <Chatbot key={index} />
-      </div>
-      <div className="rightside">
-        <div className="right-top">
-          <button className="clearbtn" onClick={clearClickHandler}>
-            Clear
-          </button>
-        </div>
-        {htmlData.length > 0 ? (
-          <ul className="rendered-list">
-            {htmlData.map((data, key) => {
-              return (
-                <li key={key} className="rendered-list-item">
-                  <div
-                    dangerouslySetInnerHTML={{ __html: data }}
-                    className="rendered-data"
-                  ></div>
-                </li>
-              );
-            })}
-          </ul>
-        ) : (
-          <div className="empty-list">
-            <p>Ask your question to bot</p>
-          </div>
-        )}
       </div>
     </div>
   );
